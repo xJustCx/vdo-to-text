@@ -53,7 +53,7 @@ def summarize_text(text):
     return response.choices[0].message.content
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST" , "HEAD"])
 def upload_file():
     transcription = ""
     summary = ""
