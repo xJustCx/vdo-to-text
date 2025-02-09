@@ -10,10 +10,9 @@ AUDIO_FOLDER = "audio"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["AUDIO_FOLDER"] = AUDIO_FOLDER
 
-openai.api_key = "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"
+#client = openai.OpenAI(api_key="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")
 
-client = openai.OpenAI(api_key="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")
-#client = openai.Client()
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(AUDIO_FOLDER, exist_ok=True)
@@ -21,7 +20,7 @@ os.makedirs(AUDIO_FOLDER, exist_ok=True)
 def convert_mp4_to_mp3(video_path):
     """Extracts audio using ffmpeg."""
     audio_path = os.path.join(app.config["AUDIO_FOLDER"], os.path.basename(video_path).replace(".mp4", ".mp3"))
-    command = f'ffmpeg -i "{video_path}" -q:a 0 -map a "{audio_path}"'
+    command = f'ffmfpeg -i "{video_path}" -q:a 0 -map a "{audio_path}"'
     subprocess.run(command, shell=True)
     return audio_path
 
