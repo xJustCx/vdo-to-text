@@ -85,4 +85,5 @@ def upload_file():
         return render_template("upload_result.html", transcription=transcription, summary=summary)
 
 if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=True)
